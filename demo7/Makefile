@@ -1,16 +1,9 @@
-objects = foo.o bar.o all.o
-all: $(objects)
+src=$(wildcard *.c ./sub/*.c)
+dir=$(notdir $(src))
+obj=$(patsubst %.c,%.o,$(dir) )
 
-# These files compile via implicit rules
-foo.o: foo.c
-bar.o: bar.c
-all.o: all.c
-
-all.c:
-	echo "int main() { return 0; }" > all.c
-
-%.c:
-	touch $@
-
-clean:
-	rm -f *.c *.o all
+all:
+	@echo $(src)
+	@echo $(dir)
+	@echo $(obj)
+	@echo "end"

@@ -1,16 +1,12 @@
-thing_wrong := *.o # Don't do this! '*' will not get expanded
-thing_right := $(wildcard *.o)
+CC = gcc # Flag for implicit rules
+CFLAGS = -g # Flag for implicit rules. Turn on debug info
 
-all: one two three four
+# Implicit rule #1: blah is built via the C linker implicit rule
+# Implicit rule #2: blah.o is built via the C compilation implicit rule, because blah.c exists
+blah: blah.o
 
-# Fails, because $(thing_wrong) is the string "*.o"
-one: $(thing_wrong)
+blah.c:
+	echo "int main() { return 0; }" > blah.c
 
-# Stays as *.o if there are no files that match this pattern :(
-two: *.o 
-
-# Works as you would expect! In this case, it does nothing.
-three: $(thing_right)
-
-# Same as rule three
-four: $(wildcard *.o)
+clean:
+	rm -f blah*

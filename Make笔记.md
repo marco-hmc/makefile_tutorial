@@ -2,7 +2,7 @@
 
 [toc]
 
-> 本文为阅读[source](https://makefiletutorial.com/#beginner-examples)所写的笔记。这里是对应的[仓库]()。
+> 本文为阅读[source](https://makefiletutorial.com/#beginner-examples)所写的笔记。这里是对应的[仓库](https://github.com/marco-hmc/makefile_tutorial)。
 
 ### 1. Getting started
 
@@ -44,7 +44,7 @@
   * `COMMAND`:
 
     ​	用来生成`TARGETS`的一系列命令，特别地，每句`COMMAND`之前用`tab`隔开而非空格。
-    
+
     ​	不确定，但command里面的命令似乎与shell命令相同。在测试中Makefiles支持`ls` 和`cd`指令，故作上述猜测。
 
 * **Code**
@@ -82,9 +82,9 @@
   $ make
   >>>生成blah.c文件;生成blah.o文件
   ```
-  
+
   第`1`行依赖于`blah.o`，因此跳过，而第`2`行依赖于`blah.c`，也跳过，知道第`3`行，无依赖才执行。故执行顺序如上。
-  
+
   而`cc`和`gcc`的区别可以看[这里](https://blog.csdn.net/sinat_28557957/article/details/87641491)，为什么就连Makefiles教程里面都会有`cc`，我感觉一是因为在`linux`里面`cc`和`gcc`等价，二也是因为历史原因，很多Makefiles教程就是用`cc`的，习惯于用`cc`。
 
 ------
@@ -240,3 +240,9 @@
   clean:
   	rm -f blah*
   ```
+
+
+
+## 3. Conclusion
+
+原文当中还有很多进一步关于make的语法，如`notdir`和`patsubst`等用法。当如前文所说，make已不被推荐作为C/C++的构建工具，仅部分小项目或者旧项目仍在使用makefile，需要了解但却不需要深入。
